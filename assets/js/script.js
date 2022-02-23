@@ -14,11 +14,32 @@ let min = document.querySelector("#min");
 let max = document.querySelector("#max");
 
 //Funciones Secundarias
-const displayBackgroudImage = (data) => {
-    
+const displayBackgroudImage = (obj) => {
+    //Extraer la hora del objeto que contine datos del tiempo
+    let dateSpanish = new Date(obj.dt*1000).toLocaleString("es-LA",{
+        timeStyle: "short",
+        dateStyle: "long"
+    });
+    console.log(dateSpanish);
+    //convertirlo a una hora entendible para el usuario
+    //Manipular e DOM para la fecha
+    date.textContent = `Actualizacion ${dateSpanish}`;
+    //Extraer la hora
+    const dayHour = new Date(obj.dt*1000).getHours();
+    console.log(dayHour);
+    //logica if else
+    if(dayHour > 6 && dayHour < 18){
+        container.classList.remove('night');
+        container.classList.add('day');
+    } else {
+        container.classList.remove('day');
+        container.classList.add('night');
+    }
 }
 
-const displayData = (data) => {
+const displayData = (obj) => {
+    console.log(obj);
+    /* temperatureDegrees.textContent =  */
 
 }
 
@@ -32,12 +53,12 @@ const getWeatherData = async (city) => {
             "x-rapidapi-key": "ddddfb1564msh7d3541e37649c97p17ece3jsnf856d254c62a"
         }
     });
-    const data = res.json();
+    const data = await res.json();
     //fetch para el endpoint
     //CAmbiar el fondo de pantalla
-    /* displayBackgroudImage(data); */
+    displayBackgroudImage(data);
     //Mostrar los datos en pantalla
-    /* displayData(data); */
+    displayData(data);
 }
 
 searchForm.addEventListener("submit", e => {
@@ -47,6 +68,6 @@ searchForm.addEventListener("submit", e => {
 
 //Al cargar la pag nos carge una ciudad
 window.onload = () => {
-    getWeatherData("London");
+    getWeatherData("Boston");
 }
 
