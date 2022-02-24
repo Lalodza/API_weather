@@ -20,13 +20,13 @@ const displayBackgroudImage = (obj) => {
         timeStyle: "short",
         dateStyle: "long"
     });
-    console.log(dateSpanish);
+   /*  console.log(dateSpanish); */
     //convertirlo a una hora entendible para el usuario
     //Manipular e DOM para la fecha
     date.textContent = `Actualizacion ${dateSpanish}`;
     //Extraer la hora
     const dayHour = new Date(obj.dt*1000).getHours();
-    console.log(dayHour);
+    /* console.log(dayHour); */
     //logica if else
     if(dayHour > 6 && dayHour < 18){
         container.classList.remove('night');
@@ -38,9 +38,14 @@ const displayBackgroudImage = (obj) => {
 }
 
 const displayData = (obj) => {
-    console.log(obj);
-    /* temperatureDegrees.textContent =  */
-
+    /* console.log(obj); */
+    temperatureDegrees.textContent = Math.floor(obj.main.temp);
+    timeZone.textContent = obj.name;
+    const icon = obj.weather[0].icon;
+    weatherIcon.innerHTML = `<img src= '/assets/icons/${icon}.png'></img>`;
+    min.textContent = Math.floor(obj.main.temp_min);
+    max.textContent = Math.floor(obj.main.temp_max);
+    temperatureDescription.textContent = obj.weather[0].description;
 }
 
 

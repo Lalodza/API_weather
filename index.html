@@ -8,6 +8,9 @@
     <title>Weather App</title>
 </head>
 <body>
+    <div class="title">
+        <h1 class="title">Weather App</h1>
+    </div>
     <div class="container" id="container">
         <div class="inputTemp">
             <form class="search__submit" id="search__submit">
@@ -16,19 +19,19 @@
             </form>
 
             <div class="inputTemp__number">
-                <div class="inputTemp__celsius" id="degreeNumber">66</div>
+                <div class="inputTemp__celsius" id="degreeNumber"></div>
                 <div class="inputTemp__symbol">°C</div>
             </div>
             <div id="weatherIcon"></div>
-            <div class="inputTemp__description" id="description">nublaso</div>
+            <div class="inputTemp__description" id="description">Descripcion</div>
         </div>
         <div class="location">
             <div class="location__city" id="timeZone">direccion</div>
             <div class="location__date" id="date">fecha</div>
         </div>
         <div class="weather">
-            <div class="weather__min"><small>min </small><span id="min">58</span> °C</div>
-            <div class="weather__max"><small>max </small><span id="max">99</span> °C</div>
+            <div class="weather__min"><small>min </small><span id="min">--</span> °C</div>
+            <div class="weather__max"><small>max </small><span id="max">--</span> °C</div>
         </div>
     </div>
     <script src="assets/js/script.js"></script>
